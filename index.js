@@ -17,7 +17,8 @@ function myFunction() {
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+//the fucntion nestedFunction, which is nested inside myFunction, can access the const internal because it is one scope below myFunction where internal is declared.
+// therefore has accedd to all of myFunctions data because the scope of myFunction is larger than that of nestedFunction.
 
 
 
