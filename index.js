@@ -139,8 +139,8 @@ console.log(lowerCaseNames(zooAnimals));
     💡 NOTE: The tests for 'consume' will pass if it is created correctly and also after you correctly complete the functions 'add' and 'greeting' below in Step 2.
   */
 
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
+  function consume(a, b, cb){
+    return cb(a, b);
   }
  
   
@@ -151,19 +151,22 @@ console.log(lowerCaseNames(zooAnimals));
  2. Return the sum of those numbers
  */
 
-function add(/*Your Code Here */){
-    /*Your Code Here*/
+function add(num1, num2){
+    let sum = num1 + num2;
+    return sum;
   }
-
+console.log(consume(1, 5, add));
 
 /* Use multiply to do the following:
 1. Receive two numbers as an argument that are passed in from its first and second parameters
 2. Return the product of those numbers
 */
 
-function multiply(/*Your Code Here */){
-   /*Your Code Here */
-  }
+function multiply(num1, num2) {
+  let answer = num1 * num2;
+  return answer;
+}
+console.log(consume(1, 5, multiply));
 
 
  /* Use greeting to do the following:
@@ -172,9 +175,11 @@ function multiply(/*Your Code Here */){
 💡 NOTE: The string returned must match the format above or the test will not pass!
 */
 
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
-  }
+function greeting(a, b) {
+  let greet = `Hello ${a} ${b}, nice to meet you!`
+  return greet;
+}
+console.log(consume('Anne', 'Hickman', greeting));
   
   
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
@@ -198,8 +203,10 @@ function greeting(/*Your Code Here */){
 - Instances of CuboidMaker should initialize `length`, `width` and `height` properties
 */
 
-function CuboidMaker(/*Your Code Here */){
-  /*Your Code Here */
+function CuboidMaker(obj){
+this.length = obj.length;
+this.width = obj.width;
+this.height = obj.height;
 }
 
 
@@ -207,7 +214,10 @@ function CuboidMaker(/*Your Code Here */){
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   💡 NOTE: Formula for cuboid volume: length * width * height   
 */
-
+CuboidMaker.prototype.volume = function () {
+  let volume = this.length * this.width * this.height;
+  return volume;
+}
 
 
 
@@ -215,37 +225,57 @@ function CuboidMaker(/*Your Code Here */){
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   💡 NOTE: Formula for cuboid surface area: 2 * (length * width + length * height + width * height)  
 */
-
+CuboidMaker.prototype.surfaceArea = function () {
+  let surface = 2 * ((this.length * this.width) + (this.length * this.height) + (this.width * this.height));
+  return surface;
+};
 
 
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
-
-
-
+const cuboid = new CuboidMaker ({length: 4, width: 5, height: 5});
+console.log(cuboid);
 
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(cuboid.volume()); // 100
-// console.log(cuboid.surfaceArea()); // 130
+console.log(cuboid.volume()); // 100
+console.log(cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //Using CuboidMakerTwo, take your prototypes from above and refactor into class syntax. Then, create an object called cuboidTwo that uses the new keyword to use our CuboidMakerTwo class.
  
 class CuboidMakerTwo{
-
+  constructor(obj){
+    this.length = obj.length;
+    this.width = obj.width;
+    this.height= obj.height;
+  }
+volume(){
+  let volume = this.length * this.width * this.height;
+return volume;
 }
+surfaceArea(){
+  let surface =
+  2 *
+  (this.length * this.width +
+    this.length * this.height +
+    this.width * this.height);
+return surface;
+}
+}
+const cuboidTwo = new CuboidMakerTwo({ length: 4, width: 5, height: 5 });
+console.log(cuboidTwo);
 
 
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-// console.log(cuboidTwo.volume()); // 100
-// console.log(cuboidTwo.surfaceArea()); // 130
+console.log(cuboidTwo.volume()); // 100
+console.log(cuboidTwo.surfaceArea()); // 130
 
 
 
