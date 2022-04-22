@@ -31,10 +31,15 @@ function myFunction() {
 💡 NOTE: you may use a for loop for this function if you wish 
 */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(num) {
+  let newNum = 0
+  for (let i = 0; i < num; i++){
+    newNum ++;
+    newNum = newNum + i;
   }
+  return newNum;
+  }
+  console.log(summation(4));
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -61,8 +66,15 @@ const zooAnimals = [
   💡 NOTE: the array returned should be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(arr){
+    const newArr = [];
+    for(let i = 0; i< arr.length; i++){
+      let objName = arr[i].animal_name;
+      let objSci = arr[i].scientific_name;
+      let objString = `name: ${objName}, scientific: ${objSci}`
+      newArr.push(objString);
+    };
+   return newArr;
   }
   
 
@@ -76,9 +88,14 @@ const zooAnimals = [
   💡 NOTE: Do some research for other methods that can help help you
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function lowerCaseNames(arr){
+    const newArr = arr.map((item) => {
+      let newName = item.animal_name;
+      newName = newName.toLowerCase();
+      return newName;
+    }); return newArr
+    }
+console.log(lowerCaseNames(zooAnimals));
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
@@ -89,8 +106,10 @@ const zooAnimals = [
   3. Return this new array
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(arr){
+    const lowPop = arr.filter((item) => {
+      return item.population <= 5;
+    }); return lowPop;
   }
   
 
@@ -103,9 +122,12 @@ const zooAnimals = [
   💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
   */
 
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
-  }
+  function USApop(arr){
+    const totalPop = arr.reduce((total, item) => {
+      return total + item.population;
+    }, 0); return totalPop;
+  } 
+  console.log(USApop(zooAnimals));
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
